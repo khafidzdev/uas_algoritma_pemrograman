@@ -16,6 +16,17 @@ struct Barang {
 // vector 
 vector<Barang> inventaris;
 
+//format rupiah
+string formatRupiah(float harga) {
+    string s = to_string((long long)harga);
+    int pos = s.length() - 3;
+    while (pos > 0) {
+        s.insert(pos, ".");
+        pos -= 3;
+    }
+    return "Rp " + s;
+}
+
 //cek id
 bool idSudahAda(int id) {
     for (const auto &b : inventaris) {
@@ -93,7 +104,7 @@ void editBarang() {
     cout << "Barang tidak ditemukan.\n";
 }
 
-//fungsi tampilkan inventaris
+//tampilkan inventaris
 void tampilkanInventaris() {
     if (inventaris.empty()) {
         cout << "Inventaris kosong.\n";
@@ -103,15 +114,15 @@ void tampilkanInventaris() {
     cout << left << setw(5) << "ID"
          << setw(20) << "Nama"
          << setw(15) << "Kategori"
-         << setw(10) << "Harga" << endl;
+         << setw(15) << "Harga" << endl;
 
-    cout << "-----------------------------------------------\n";
+    cout << "----------------------------------------------------\n";
 
     for (const auto &b : inventaris) {
         cout << left << setw(5) << b.id
              << setw(20) << b.nama
              << setw(15) << b.kategori
-             << setw(10) << b.harga << endl;
+             << setw(15) << formatRupiah(b.harga) << endl;
     }
 }
 
@@ -130,7 +141,7 @@ void urutkanBarang() {
                  return a.nama < b.nama;
              });
         cout << "Barang diurutkan berdasarkan nama.\n";
-        tampilkanInventaris(); 
+        tampilkanInventaris();
     } 
     else if (pilihan == 2) {
         sort(inventaris.begin(), inventaris.end(),
@@ -138,7 +149,7 @@ void urutkanBarang() {
                  return a.harga < b.harga;
              });
         cout << "Barang diurutkan berdasarkan harga.\n";
-        tampilkanInventaris(); 
+        tampilkanInventaris();
     } 
     else {
         cout << "Pilihan tidak valid.\n";
@@ -158,7 +169,7 @@ void cariBarang() {
             cout << "ID: " << b.id
                  << ", Nama: " << b.nama
                  << ", Kategori: " << b.kategori
-                 << ", Harga: " << b.harga << endl;
+                 << ", Harga: " << formatRupiah(b.harga) << endl;
             ditemukan = true;
         }
     }
