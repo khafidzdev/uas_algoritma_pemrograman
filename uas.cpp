@@ -5,9 +5,7 @@
 
 using namespace std;
 
-// ============================
-// STRUKTUR DATA BARANG
-// ============================
+//struktur data barang
 struct Barang {
     int id;
     string nama;
@@ -15,12 +13,10 @@ struct Barang {
     float harga;
 };
 
-// Vector untuk menyimpan inventaris
+// vector 
 vector<Barang> inventaris;
 
-// ============================
-// CEK ID SUDAH ADA ATAU BELUM
-// ============================
+//cek id
 bool idSudahAda(int id) {
     for (const auto &b : inventaris) {
         if (b.id == id) {
@@ -30,9 +26,7 @@ bool idSudahAda(int id) {
     return false;
 }
 
-// ============================
-// FUNGSI TAMBAH BARANG
-// ============================
+//tambah barang
 void tambahBarang() {
     Barang b;
 
@@ -58,9 +52,7 @@ void tambahBarang() {
     cout << "Barang berhasil ditambahkan!\n";
 }
 
-// ============================
-// FUNGSI HAPUS BARANG
-// ============================
+//hapus barang
 void hapusBarang() {
     int id;
     cout << "Masukkan ID barang yang akan dihapus: ";
@@ -76,9 +68,7 @@ void hapusBarang() {
     cout << "Barang dengan ID tersebut tidak ditemukan.\n";
 }
 
-// ============================
-// FUNGSI EDIT BARANG
-// ============================
+//edit barang
 void editBarang() {
     int id;
     cout << "Masukkan ID barang yang akan diedit: ";
@@ -103,9 +93,7 @@ void editBarang() {
     cout << "Barang tidak ditemukan.\n";
 }
 
-// ============================
-// FUNGSI TAMPILKAN INVENTARIS
-// ============================
+//fungsi tampilkan inventaris
 void tampilkanInventaris() {
     if (inventaris.empty()) {
         cout << "Inventaris kosong.\n";
@@ -127,9 +115,7 @@ void tampilkanInventaris() {
     }
 }
 
-// ============================
-// FUNGSI URUTKAN BARANG
-// ============================
+//urutkan barang
 void urutkanBarang() {
     int pilihan;
     cout << "Urutkan berdasarkan:\n";
@@ -144,7 +130,7 @@ void urutkanBarang() {
                  return a.nama < b.nama;
              });
         cout << "Barang diurutkan berdasarkan nama.\n";
-        tampilkanInventaris(); // ⬅ otomatis tampil
+        tampilkanInventaris(); 
     } 
     else if (pilihan == 2) {
         sort(inventaris.begin(), inventaris.end(),
@@ -152,16 +138,14 @@ void urutkanBarang() {
                  return a.harga < b.harga;
              });
         cout << "Barang diurutkan berdasarkan harga.\n";
-        tampilkanInventaris(); // ⬅ otomatis tampil
+        tampilkanInventaris(); 
     } 
     else {
         cout << "Pilihan tidak valid.\n";
     }
 }
 
-// ============================
-// FUNGSI CARI BARANG
-// ============================
+//cari barang
 void cariBarang() {
     string namaCari;
     cin.ignore();
@@ -184,9 +168,7 @@ void cariBarang() {
     }
 }
 
-// ============================
-// MENU UTAMA
-// ============================
+//menu
 void menu() {
     cout << "\n===== MENU INVENTARIS =====\n";
     cout << "1. Tambah Barang\n";
@@ -199,9 +181,7 @@ void menu() {
     cout << "Pilih menu: ";
 }
 
-// ============================
-// FUNGSI MAIN
-// ============================
+//main
 int main() {
     int pilihan;
 
